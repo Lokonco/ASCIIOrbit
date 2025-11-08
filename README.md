@@ -1,5 +1,10 @@
 # ASCII Orbit
-<center><h1>ASCII Orbit</h1></center>
+<p align="center">
+  <h1>ASCII Orbit</h1>
+</p>
+
+
+
 
                        :
                        :
