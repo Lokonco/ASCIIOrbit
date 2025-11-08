@@ -1,83 +1,22 @@
-# CLion
-.idea/
-cmake-build-*/
-
-# General build directories
-build/
-out/
-bin/
-lib/
-
-# CMake
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-install_manifest.txt
-CTestTestfile.cmake
-_deps/
-
-# Compiled Object files
-*.o
-*.obj
-*.ko
-*.elf
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
+# Binaries
 *.exe
 *.out
 *.app
-*.i*86
-*.x86_64
-*.hex
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+# Build directories
+build/
+cmake-build-*/
 
-# OS generated files
+# CLion
+.idea/
+
+# Compiled files
+*.o
+*.obj
+
+# OS files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
-*~
-
-# Editor backup files
-*.swp
-*.swo
-*~
-.vscode/
-*.code-workspace
 
 # Logs
 *.log
-
-# Dependencies
-external/
-third_party/
-vendor/
-
-# User-specific files
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
