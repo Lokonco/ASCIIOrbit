@@ -4,6 +4,9 @@
 #include <vector>
 #include <chrono>
 #include <thread>
+#include <cstdio>
+#include <unistd.h>
+#include <sys/select.h>
 //--------------------//
 
 //------ANSI escape codes for colors------//
@@ -39,6 +42,23 @@ void getTerminalSize(int& width, int& height) {
     fp = popen("tput lines", "r");
     if (fp) { fscanf(fp, "%d", &height); pclose(fp); }
 #endif
+}
+
+// Check if user pressed Enter (non-blocking)
+bool checkForExit() {
+    fd_set fds;
+    struct timeval tv;
+    FD_ZERO(&fds);
+    FD_SET(STDIN_FILENO, &fds);
+    tv.tv_sec = 0;
+    tv.tv_usec = 0;
+
+    if (select(STDIN_FILENO + 1, &fds, nullptr, nullptr, &tv) > 0) {
+        char c;
+        read(STDIN_FILENO, &c, 1);
+        return c == '\n' || c == 'q';
+    }
+    return false;
 }
 //---------------------------------------//
 
@@ -126,9 +146,8 @@ int main() {
     const double frameTime = 1.0 / FPS;
     const double speedMultiplier = 0.5;
 
-    // Base canvas: orbits + Sun
+    // Base canvas: orbits only (Sun added each frame to ensure it's visible)
     Canvas baseCanvas(termWidth, termHeight, 0.5, 30.0);
-    baseCanvas.setPosition('O', YELLOW, 0.0, 0.0);
 
     for (const auto& planet : planets) {
         double radius = planet.orbitRadius;
@@ -147,9 +166,17 @@ int main() {
     Canvas frameCanvas = baseCanvas;
 
     auto lastFrameTime = std::chrono::steady_clock::now();
-    std::cout << "\033[H";
+
+    std::cout << "Press Enter or 'q' to exit...\n" << std::flush;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    clearScreen();
 
     while (true) {
+        // Check for exit
+        if (checkForExit()) {
+            break;
+        }
+
         auto currentTime = std::chrono::steady_clock::now();
         double deltaTime = std::chrono::duration<double>(currentTime - lastFrameTime).count();
 
@@ -161,6 +188,9 @@ int main() {
         // Prepare frame
         frameCanvas = baseCanvas;
 
+        // Draw Sun AFTER orbits to ensure it's on top
+        frameCanvas.setPosition('O', YELLOW, 0.0, 0.0);
+
         // Update planet positions
         for (auto& planet : planets) {
             planet.updatePosition(deltaTime, speedMultiplier);
@@ -171,7 +201,7 @@ int main() {
 
         // Efficient redraw — only draw changed cells
         std::cout << "\033[H";
-        for (int i = 0; i < frameCanvas.data.size(); i++) {
+        for (size_t i = 0; i < frameCanvas.data.size(); i++) {
             if (frameCanvas.data[i] != lastFrame.data[i] ||
                 frameCanvas.colors[i] != lastFrame.colors[i]) {
                 int y = i / frameCanvas.width;
