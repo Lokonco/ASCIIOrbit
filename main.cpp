@@ -149,6 +149,19 @@ int main() {
     // Base canvas: orbits only (Sun added each frame to ensure it's visible)
     Canvas baseCanvas(termWidth, termHeight, 0.5, 30.0);
 
+
+    // Draw stars for background
+    const std::string starColors[] = {GRAY, RESET, YELLOW, CYAN};
+    int numStars = (termWidth * termHeight) / 50;  // density factor
+
+    for (int i = 0; i < numStars; i++) {
+        double x = (rand() % 200 - 100) / 100.0 * 30.0;  // random X in range -30..30
+        double y = (rand() % 200 - 100) / 100.0 * 30.0;  // random Y in range -30..30
+        baseCanvas.setPosition('.', starColors[rand() % 4], x, y);
+    }
+
+
+
     for (const auto& planet : planets) {
         double radius = planet.orbitRadius;
         double circumference = 2 * M_PI * radius;
