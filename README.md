@@ -35,6 +35,11 @@
 ![Fully Drawn](./assets/AsciiOrbitFullyDrawn.gif)
 
 ## Installation
+### Needed 
+C++ Compiler
+Cmake
+Bash 
+
 ### MacOS / Linux
 Run the command below in your terminal and it will download.\
 curl -sSL https://raw.githubusercontent.com/Lokonco/ASCIIOrbit/main/install.sh | bash\
