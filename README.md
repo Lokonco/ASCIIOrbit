@@ -36,8 +36,9 @@
 
 ## Installation
 ### MacOS / Linux
+Run the command below in your terminal and it will download.\
 curl -sSL https://raw.githubusercontent.com/Lokonco/ASCIIOrbit/main/install.sh | bash\
-I am trying to see if i can make a brew tap for this just taking a break but the above should work
+I am working on getting a brew tap going and download for xbps etc.
 
 ### Windows
 If you coding in c++ on windows then you should know how to run this.
