@@ -151,6 +151,7 @@ int main() {
 
 
     // Draw stars for background
+    // Bug here only happening in orbit lines
     const std::string starColors[] = {GRAY, RESET, YELLOW, CYAN};
     int numStars = (termWidth * termHeight) / 50;  // density factor
 
@@ -212,7 +213,7 @@ int main() {
             frameCanvas.setPosition(planet.symbol, planet.color, px, py);
         }
 
-        // Efficient redraw — only draw changed cells
+        // only draw changed cells
         std::cout << "\033[H";
         for (size_t i = 0; i < frameCanvas.data.size(); i++) {
             if (frameCanvas.data[i] != lastFrame.data[i] ||
