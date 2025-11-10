@@ -36,8 +36,8 @@
 
 ## Installation
 ### Needed 
-C++ Compiler
-Cmake
+C++ Compiler\
+Cmake\
 Bash 
 
 ### MacOS / Linux
