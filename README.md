@@ -35,12 +35,12 @@
 ![Fully Drawn](./assets/AsciiOrbitFullyDrawn.gif)
 
 ## Installation
+### MacOS / Linux
+curl -sSL https://raw.githubusercontent.com/Lokonco/ASCIIOrbit/main/install.sh | bash
+I am trying to see if i can make a brew tap for this just taking a break but the above should work
 
-Will do this later
-
-## Usage
-
-Will do this later
+### Windows
+If you coding in c++ on windows then you should know how to run this.
 
 ## Future Plans
 - Add Commands for more customizability
