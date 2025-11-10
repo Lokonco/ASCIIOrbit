@@ -36,7 +36,7 @@
 
 ## Installation
 ### MacOS / Linux
-curl -sSL https://raw.githubusercontent.com/Lokonco/ASCIIOrbit/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/Lokonco/ASCIIOrbit/main/install.sh | bash\
 I am trying to see if i can make a brew tap for this just taking a break but the above should work
 
 ### Windows
