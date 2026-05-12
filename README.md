@@ -43,16 +43,10 @@ Bash
 ### MacOS / Linux
 Run the command below in your terminal and it will download.\
 curl -sSL https://raw.githubusercontent.com/Lokonco/ASCIIOrbit/main/install.sh | bash\
-I am working on getting a brew tap going and download for xbps etc.
+I am working on getting a brew tap going
 
 ### Windows
 If you coding in c++ on windows then you should know how to run this.
-
-## Future Plans
-- Add Commands for more customizability
-- Add Planet Information
-- Add Stars to background
-- Add a Ascii Galaxy that draws on screen with animation
 
 ## License
 
